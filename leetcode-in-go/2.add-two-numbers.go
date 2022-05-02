@@ -15,7 +15,9 @@
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	dummyHead := new(ListNode)
 	cur := dummyHead
+
 	carry := 0
+
 	for l1 != nil || l2 != nil || carry != 0 {
 		if l1 != nil {
 			carry += l1.Val

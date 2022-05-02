@@ -9,10 +9,8 @@ func twoSum(nums []int, target int) []int {
 	mp := make(map[int]int)
 
 	for i, val := range nums {
-		_, ok := mp[target-val]
-
-		if ok {
-			return []int{i, mp[target-val]}
+		if idx, ok := mp[target-val]; ok {
+			return []int{idx, i}
 		}
 
 		mp[val] = i

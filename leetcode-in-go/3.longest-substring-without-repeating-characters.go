@@ -7,17 +7,20 @@
 // @lc code=start
 func lengthOfLongestSubstring(s string) int {
 	left, longest, cache := 0, 0, make([]int, 128)
-	maxFn := func(a, b int) int {
-		if a > b {
-			return a
+
+	max := func(x, y int) int {
+		if x < y {
+			return y
 		}
-		return b
+		return x
 	}
 	for i, val := range s {
-		left = maxFn(left, cache[val]+1)
-		longest = maxFn(longest, i-left+1)
-		cache[val] = i
+		left = max(left, cache[val])
+		longest = max(longest, i-left+1)
+
+		cache[val] = i + 1
 	}
+
 	return longest
 }
 

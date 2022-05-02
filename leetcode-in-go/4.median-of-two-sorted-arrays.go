@@ -36,12 +36,14 @@ func findKth(nums1, nums2 []int, start1, end1, start2, end2, k int) int {
 	}
 
 	return findKth(nums1, nums2, start1, end1, j+1, end2, k-j+start2-1)
+
 }
 
 func min(x, y int) int {
 	if x < y {
 		return x
 	}
+
 	return y
 }
 
