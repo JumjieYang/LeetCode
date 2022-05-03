@@ -20,40 +20,40 @@ func mergeKLists(lists []*ListNode) *ListNode {
 	return merge(lists, 0, len(lists)-1)
 }
 
-func merge(lists []*ListNode, start, end int) *ListNode {
-	if start == end {
-		return lists[start]
+func merge(lists []*ListNode, left, right int) *ListNode {
+	if left == right {
+		return lists[left]
 	}
+	mid := (left + right) / 2
+	l := merge(lists, left, mid)
+	r := merge(lists, mid+1, right)
 
-	mid := (start + end) / 2
-	left := merge(lists, start, mid)
-	right := merge(lists, mid+1, end)
-
-	return merge2(left, right)
+	return merge2(l, r)
 }
 
-func merge2(left, right *ListNode) *ListNode {
+func merge2(l, r *ListNode) *ListNode {
 	dummyHead := new(ListNode)
+
 	cur := dummyHead
 
-	for left != nil && right != nil {
-		if left.Val < right.Val {
-			cur.Next = left
-			left = left.Next
+	for l != nil && r != nil {
+		if l.Val < r.Val {
+			cur.Next = l
+			l = l.Next
 		} else {
-			cur.Next = right
-			right = right.Next
+			cur.Next = r
+			r = r.Next
 		}
 
 		cur = cur.Next
 	}
 
-	if left != nil {
-		cur.Next = left
+	if l == nil {
+		cur.Next = r
 	}
 
-	if right != nil {
-		cur.Next = right
+	if r == nil {
+		cur.Next = l
 	}
 
 	return dummyHead.Next

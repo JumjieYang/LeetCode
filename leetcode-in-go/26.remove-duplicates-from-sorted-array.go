@@ -20,7 +20,6 @@ func removeDuplicates(nums []int) int {
 	}
 
 	return slower + 1
-
 }
 
 // @lc code=end

@@ -14,7 +14,6 @@ func generateParenthesis(n int) []string {
 }
 
 func backtracking(res *[]string, left, right int, cur string) {
-
 	if left == right && left == 0 {
 		*res = append(*res, cur)
 		return
@@ -22,13 +21,11 @@ func backtracking(res *[]string, left, right int, cur string) {
 
 	if left > 0 {
 		backtracking(res, left-1, right, cur+"(")
-
 	}
 
 	if right > left {
 		backtracking(res, left, right-1, cur+")")
 	}
-
 }
 
 // @lc code=end

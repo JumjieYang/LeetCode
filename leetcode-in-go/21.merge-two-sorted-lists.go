@@ -14,7 +14,9 @@
  */
 func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
 	dummyHead := new(ListNode)
+
 	cur := dummyHead
+
 	for list1 != nil && list2 != nil {
 		if list1.Val < list2.Val {
 			cur.Next = list1
